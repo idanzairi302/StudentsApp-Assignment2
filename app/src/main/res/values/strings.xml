@@ -3,4 +3,8 @@
 
     <!-- Activity Titles -->
     <string name="students_list_title">Students List</string>
+
+    <!-- Student Form Fields -->
+    <string name="student_name">Name</string>
+    <string name="student_id">Student ID</string>
 </resources>

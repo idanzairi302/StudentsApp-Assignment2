@@ -5,7 +5,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.studentsapp.databinding.ActivityStudentListBinding
+import com.example.studentsapp.models.Model
 
 class StudentListActivity : AppCompatActivity() {
 
@@ -23,5 +25,21 @@ class StudentListActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        setupRecyclerView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Refresh list when returning from other screens
+        binding?.studentsRecyclerView?.adapter = StudentsAdapter(Model.shared.students) { student ->
+            // Student click - will be handled in next commit
+        }
+    }
+
+    private fun setupRecyclerView() {
+        val layout = LinearLayoutManager(this)
+        binding?.studentsRecyclerView?.layoutManager = layout
+        binding?.studentsRecyclerView?.setHasFixedSize(true)
     }
 }
