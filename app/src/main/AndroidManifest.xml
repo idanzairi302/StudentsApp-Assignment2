@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Student Details Activity -->
+        <activity
+            android:name=".StudentDetailsActivity"
+            android:exported="false"
+            android:label="@string/student_details_title"
+            android:parentActivityName=".StudentListActivity"
+            android:theme="@style/Theme.StudentsApp" />
     </application>
 
 </manifest>
