@@ -1,5 +1,6 @@
 package com.example.studentsapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -35,6 +36,7 @@ class StudentDetailsActivity : AppCompatActivity() {
 
         setupToolbar()
         displayStudentDetails()
+        setupEditButton()
     }
 
     override fun onResume() {
@@ -67,6 +69,14 @@ class StudentDetailsActivity : AppCompatActivity() {
             phoneTextView.text = student.phone
             addressTextView.text = student.address
             checkedCheckBox.isChecked = student.isChecked
+        }
+    }
+
+    private fun setupEditButton() {
+        binding?.editButton?.setOnClickListener {
+            val intent = Intent(this, EditStudentActivity::class.java)
+            intent.putExtra("STUDENT_ID", studentId)
+            startActivity(intent)
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.studentsapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -27,13 +28,16 @@ class StudentListActivity : AppCompatActivity() {
         }
 
         setupRecyclerView()
+        setupFab()
     }
 
     override fun onResume() {
         super.onResume()
         // Refresh list when returning from other screens
         binding?.studentsRecyclerView?.adapter = StudentsAdapter(Model.shared.students) { student ->
-            // Student click - will be handled in next commit
+            val intent = Intent(this, StudentDetailsActivity::class.java)
+            intent.putExtra("STUDENT_ID", student.id)
+            startActivity(intent)
         }
     }
 
@@ -41,5 +45,12 @@ class StudentListActivity : AppCompatActivity() {
         val layout = LinearLayoutManager(this)
         binding?.studentsRecyclerView?.layoutManager = layout
         binding?.studentsRecyclerView?.setHasFixedSize(true)
+    }
+
+    private fun setupFab() {
+        binding?.addStudentFab?.setOnClickListener {
+            val intent = Intent(this, NewStudentActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

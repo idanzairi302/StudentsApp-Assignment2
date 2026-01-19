@@ -23,12 +23,28 @@
             </intent-filter>
         </activity>
 
+        <!-- New Student Activity -->
+        <activity
+            android:name=".NewStudentActivity"
+            android:exported="false"
+            android:label="@string/new_student_title"
+            android:parentActivityName=".StudentListActivity"
+            android:theme="@style/Theme.StudentsApp" />
+
         <!-- Student Details Activity -->
         <activity
             android:name=".StudentDetailsActivity"
             android:exported="false"
             android:label="@string/student_details_title"
             android:parentActivityName=".StudentListActivity"
+            android:theme="@style/Theme.StudentsApp" />
+
+        <!-- Edit Student Activity -->
+        <activity
+            android:name=".EditStudentActivity"
+            android:exported="false"
+            android:label="@string/edit_student_title"
+            android:parentActivityName=".StudentDetailsActivity"
             android:theme="@style/Theme.StudentsApp" />
     </application>
 
